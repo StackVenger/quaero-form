@@ -4,6 +4,11 @@ import * as React from "react";
 
 import { cn } from "@/lib/utils";
 
+interface CustomSelectContentProps
+  extends React.ComponentProps<typeof SelectPrimitive.Content> {
+  removeViewportPadding?: boolean; // add your custom prop here
+}
+
 function Select({
   ...props
 }: React.ComponentProps<typeof SelectPrimitive.Root>) {
@@ -52,9 +57,10 @@ function SelectContent({
   className,
   children,
   position = "item-aligned",
+  removeViewportPadding = false,
   align = "center",
   ...props
-}: React.ComponentProps<typeof SelectPrimitive.Content>) {
+}: CustomSelectContentProps) {
   return (
     <SelectPrimitive.Portal>
       <SelectPrimitive.Content
@@ -72,7 +78,7 @@ function SelectContent({
         <SelectScrollUpButton />
         <SelectPrimitive.Viewport
           className={cn(
-            "p-1",
+            removeViewportPadding ? "p-0" : "p-1",
             position === "popper" &&
               "h-[var(--radix-select-trigger-height)] w-full min-w-[var(--radix-select-trigger-width)] scroll-my-1"
           )}
