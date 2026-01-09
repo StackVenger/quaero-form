@@ -1,19 +1,12 @@
-import { Button } from "@/components/ui/button"
-
-import './App.css'
+import "./App.css";
+import FormBuilder from "./pages/FormBuilder";
 
 function App() {
-  
-
   return (
     <>
-    <div className='text-textPrimary'>Hello </div>
-
-    <div className="flex min-h-svh flex-col items-center justify-center">
-      <Button>Click me</Button>
-    </div>
+      <FormBuilder />
     </>
-  )
+  );
 }
 
-export default App
+export default App;
