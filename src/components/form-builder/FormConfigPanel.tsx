@@ -1,35 +1,67 @@
-import { Input } from "@/components/ui/input";
 import {
   Select,
   SelectContent,
   SelectGroup,
   SelectItem,
-  SelectLabel,
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import formSelectItems, { iconMap } from "@/lib/data/formSelectItems";
+import { Search } from "lucide-react";
+import { useState } from "react";
+import { Input } from "../ui/input";
+
 const FormConfigPanel = () => {
+  const [query, setQuery] = useState("");
+
+  const formItems = formSelectItems
+    .filter((item) => item.text.includes(query))
+    .map((item, idx) => {
+      const Icon = iconMap[item.icon];
+
+      return (
+        <SelectItem value={item.value} key={idx}>
+          {<Icon />}
+          <span>{item.text}</span>
+        </SelectItem>
+      );
+    });
+
   return (
     <div>
-      <Select defaultOpen={true} open={true}>
-        <SelectTrigger className="w-70">
-          <SelectValue placeholder="Select a timezone" />
+      <Select>
+        <SelectTrigger className="w-70 shadow-none">
+          <SelectValue placeholder="Select a type" />
         </SelectTrigger>
         <SelectContent
           position="popper"
           side="bottom"
           collisionPadding={0}
           removeViewportPadding={true}
+          className="shadow-none"
         >
-          <Input className="border-0 border-b shadow-none rounded-none focus-visible:ring-0" />
-          <SelectGroup>
-            <SelectLabel>North America</SelectLabel>
-            <SelectItem value="est">Eastern Standard Time (EST)</SelectItem>
-            <SelectItem value="cst">Central Standard Time (CST)</SelectItem>
-            <SelectItem value="mst">Mountain Standard Time (MST)</SelectItem>
-            <SelectItem value="pst">Pacific Standard Time (PST)</SelectItem>
-            <SelectItem value="akst">Alaska Standard Time (AKST)</SelectItem>
-            <SelectItem value="hst">Hawaii Standard Time (HST)</SelectItem>
+          <div className="px-3 bg-gray-100 border-0 border-b flex justify-center items-center gap-2.5">
+            <Search size={16} className="text-gray-500" />
+            <Input
+              autoFocus={true}
+              className="border-0 p-0 shadow-none rounded-none focus-visible:ring-0"
+              value={query}
+              onKeyDown={(e) => {
+                e.stopPropagation();
+              }}
+              onChange={(e) => {
+                setQuery(e.target.value);
+              }}
+            />
+          </div>
+          <SelectGroup className="p-1">
+            {formItems.length ? (
+              formItems
+            ) : (
+              <span className="text-sm text-center p-1 block">
+                No items found
+              </span>
+            )}
           </SelectGroup>
         </SelectContent>
       </Select>
