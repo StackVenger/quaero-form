@@ -1,9 +1,7 @@
-import type { LucideIcon } from "lucide-react";
 import { ChevronDown, Type } from "lucide-react";
+import type { FormSelectItem, IconMapType } from "../types/formSelectItemstype";
 
-type iconType = "Type" | "ChevronDown";
-
-const formSelectItems: { value: string; icon: iconType; text: string }[] = [
+const formSelectItems: FormSelectItem[] = [
   {
     value: "input",
     icon: "Type",
@@ -18,7 +16,7 @@ const formSelectItems: { value: string; icon: iconType; text: string }[] = [
 
 export default formSelectItems;
 
-export const iconMap: Record<iconType, LucideIcon> = {
+export const iconMap: IconMapType = {
   Type,
   ChevronDown,
 };
