@@ -9,3 +9,4 @@ export interface FormSelectItem {
 }
 
 export type IconMapType = Record<iconType, LucideIcon>;
+export type QueryType = "input" | "dropdown";

@@ -1,16 +1,19 @@
 import FormConfigPanel from "@/components/form-builder/FormConfigPanel";
 import FormPreview from "@/components/form-builder/FormPreview";
+import { useState } from "react";
 
 const FormBuilder = () => {
+  const [formBuilderQuery, setFormBuilderQuery] = useState<string>("input");
+
   return (
-    <div>
+    <div className="flex gap-10">
       {/* form config panel */}
       <div>
-        <FormConfigPanel />
+        <FormConfigPanel setFormBuilderQuery={setFormBuilderQuery} />
       </div>
       {/* form preview */}
       <div>
-        <FormPreview />
+        <FormPreview query={formBuilderQuery} />
       </div>
     </div>
   );

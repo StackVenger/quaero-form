@@ -11,7 +11,11 @@ import { Search } from "lucide-react";
 import { useState } from "react";
 import { Input } from "../ui/input";
 
-const FormConfigPanel = () => {
+const FormConfigPanel = ({
+  setFormBuilderQuery,
+}: {
+  setFormBuilderQuery: (query: string) => void;
+}) => {
   const [query, setQuery] = useState("");
 
   const formItems = formSelectItems
@@ -29,7 +33,7 @@ const FormConfigPanel = () => {
 
   return (
     <div>
-      <Select>
+      <Select onValueChange={(value) => setFormBuilderQuery(value)}>
         <SelectTrigger className="w-70 shadow-none">
           <SelectValue placeholder="Select a type" />
         </SelectTrigger>
