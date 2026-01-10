@@ -10,9 +10,10 @@
 
     "baseUrl": ".",
     "paths": {
-      "@/*": [
-        "./src/*"
-      ]
+      "@/*": ["./src/*"],
+      "@data/*": ["./src/lib/data/*"],
+      "@types/*": ["./src/lib/types/*"],
+      "@utils/*": ["./src/lib/utils/*"]
     },
 
     /* Bundler mode */

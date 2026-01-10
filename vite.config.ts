@@ -1,7 +1,7 @@
-import path from "path"
-import tailwindcss from "@tailwindcss/vite"
-import react from "@vitejs/plugin-react"
-import { defineConfig } from "vite"
+import tailwindcss from "@tailwindcss/vite";
+import react from "@vitejs/plugin-react";
+import path from "path";
+import { defineConfig } from "vite";
 
 // https://vite.dev/config/
 export default defineConfig({
@@ -9,6 +9,9 @@ export default defineConfig({
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),
+      "@data": path.resolve(__dirname, "./src/lib/data"),
+      "@types": path.resolve(__dirname, "./src/lib/types"),
+      "@utils": path.resolve(__dirname, "./src/lib/utils"),
     },
   },
-})
+});
