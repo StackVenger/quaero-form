@@ -2,10 +2,11 @@ module.exports = {
   // Custom parser options to handle emojis
   parserPreset: {
     parserOpts: {
-      // This regex extracts type, scope, and subject from commits with emojis
-      // Format: "emoji  type(scope): subject" or "emoji  type: subject"
+      // This regex extracts type, scope, and subject from commits with or without emojis
+      // Format: "emoji  type(scope): subject" or "type(scope): subject"
+      // The emoji is optional to support legacy commits
       headerPattern:
-        /^(?:[\u{1F300}-\u{1F9FF}]|[\u{2600}-\u{26FF}]|[\u{2700}-\u{27BF}])\s+(\w+)(?:\(([^)]*))\)?:\s(.+)$/u,
+        /^(?:(?:[\u{1F300}-\u{1F9FF}]|[\u{2600}-\u{26FF}]|[\u{2700}-\u{27BF}])\s+)?(\w+)(?:\(([^)]*)\))?:\s(.+)$/u,
       headerCorrespondence: ['type', 'scope', 'subject'],
     },
   },
