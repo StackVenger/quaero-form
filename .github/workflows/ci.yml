@@ -16,6 +16,8 @@ jobs:
     steps:
       # 1. Checkout repo
       - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0  # Fetch all history for commitlint
 
       # 2. Setup Node.js environment
       - uses: actions/setup-node@v3
@@ -34,3 +36,4 @@ jobs:
         uses: wagoid/commitlint-github-action@v5
         with:
           configFile: commitlint.config.cjs
+          firstParent: true  # Only check commits in this push, not entire history
