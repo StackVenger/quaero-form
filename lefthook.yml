@@ -1,6 +1,6 @@
 pre-commit:
   commands:
     lint:
-      glob: "*.{js,ts,jsx,tsx,json,css,html}"
-      run: npx git-format-staged --formatter 'npx biome check --write --stdin-file-path="{}"' .
+      glob: "*.{js,ts,cjs,mjs,d.cts,d.mts,jsx,tsx,json,jsonc,css,html}"
+      run: npx git-format-staged --formatter 'npx biome check --write --files-ignore-unknown=true --no-errors-on-unmatched --stdin-file-path="{}"' {staged_files}
 
