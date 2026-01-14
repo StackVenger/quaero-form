@@ -1,6 +1,7 @@
 import FormConfigPanel from "@/components/form-builder/FormConfigPanel";
 import FormPreview from "@/components/form-builder/FormPreview";
-import type { QueryType } from "@/lib/types/formSelectItemstype";
+import SortableItem from "@/components/sortableItem/SortableItem";
+import type { AddedInput, QueryType } from "@/lib/types/formSelectItemstype";
 import {
   closestCenter,
   DndContext,
@@ -14,76 +15,10 @@ import {
   arrayMove,
   SortableContext,
   sortableKeyboardCoordinates,
-  useSortable,
   verticalListSortingStrategy,
 } from "@dnd-kit/sortable";
-import { CSS } from "@dnd-kit/utilities";
-import { ChevronDown, GripVertical, Text, X } from "lucide-react";
+import { ChevronDown, Text } from "lucide-react";
 import { useEffect, useState } from "react";
-
-const inputTypeArray = [{ text: "input" }, { text: "dropdown" }];
-
-interface AddedInput {
-  id: string;
-  type: QueryType;
-  label: string;
-}
-
-// Sortable Item Component
-const SortableItem = ({
-  input,
-  onRemove,
-  getIcon,
-  idx,
-}: {
-  input: AddedInput;
-  onRemove: (id: string) => void;
-  getIcon: (type: QueryType) => React.ReactNode;
-  idx: number;
-}) => {
-  const {
-    attributes,
-    listeners,
-    setNodeRef,
-    transform,
-    transition,
-    isDragging,
-  } = useSortable({ id: input.id });
-
-  const style = {
-    transform: CSS.Transform.toString(transform),
-    transition,
-    opacity: isDragging ? 0.5 : 1,
-  };
-
-  return (
-    <div
-      ref={setNodeRef}
-      style={style}
-      className="flex items-center gap-2 px-3 py-2 bg-gray-50 border border-gray-200 rounded-lg hover:bg-gray-100 transition-colors"
-    >
-      <button
-        {...attributes}
-        {...listeners}
-        className="cursor-grab active:cursor-grabbing text-gray-400 hover:text-gray-600"
-      >
-        <GripVertical className="w-4 h-4" />
-      </button>
-      <div className="flex items-center gap-2 text-gray-700 flex-1">
-        {getIcon(input.type)}
-        <span className="text-sm">{input.label}</span>
-        <span>{idx + 1}</span>
-      </div>
-      <button
-        onClick={() => onRemove(input.id)}
-        className="text-gray-400 hover:text-red-600 transition-colors"
-        aria-label="Remove field"
-      >
-        <X className="w-4 h-4" />
-      </button>
-    </div>
-  );
-};
 
 const FormBuilder = () => {
   const [formBuilderQuery, setFormBuilderQuery] = useState<QueryType>("input");
@@ -95,15 +30,6 @@ const FormBuilder = () => {
       coordinateGetter: sortableKeyboardCoordinates,
     })
   );
-
-  const icon =
-    formBuilderQuery === "input" ? (
-      <Text className="w-5 h-5" />
-    ) : formBuilderQuery === "dropdown" ? (
-      <ChevronDown className="w-5 h-5" />
-    ) : (
-      ""
-    );
 
   // Automatically add input when query changes
   useEffect(() => {
