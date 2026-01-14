@@ -7,12 +7,10 @@ const SortableItem = ({
   input,
   onRemove,
   getIcon,
-  idx,
 }: {
   input: AddedInput;
   onRemove: (id: string) => void;
   getIcon: (type: QueryType) => React.ReactNode;
-  idx: number;
 }) => {
   const {
     attributes,
@@ -45,7 +43,6 @@ const SortableItem = ({
       <div className="flex items-center gap-2 text-gray-700 flex-1">
         {getIcon(input.type)}
         <span className="text-sm">{input.label}</span>
-        <span>{idx + 1}</span>
       </div>
       <button
         onClick={() => onRemove(input.id)}

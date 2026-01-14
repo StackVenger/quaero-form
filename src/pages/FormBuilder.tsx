@@ -90,9 +90,8 @@ const FormBuilder = () => {
                 strategy={verticalListSortingStrategy}
               >
                 <div className="space-y-2">
-                  {addedInputArray.map((input, idx) => (
+                  {addedInputArray.map((input) => (
                     <SortableItem
-                      idx={idx}
                       key={input.id}
                       input={input}
                       onRemove={handleRemoveInput}
