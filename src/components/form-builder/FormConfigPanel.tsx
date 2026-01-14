@@ -34,7 +34,9 @@ const FormConfigPanel = ({
 
   return (
     <div>
-      <Select onValueChange={(value) => setFormBuilderQuery(value)}>
+      <Select
+        onValueChange={(value) => setFormBuilderQuery(value as QueryType)}
+      >
         <SelectTrigger className="w-70 shadow-none">
           <SelectValue placeholder="Select a type" />
         </SelectTrigger>
