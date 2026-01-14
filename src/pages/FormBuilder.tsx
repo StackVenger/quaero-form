@@ -1,27 +1,27 @@
-import FormConfigPanel from "@/components/form-builder/FormConfigPanel";
-import FormPreview from "@/components/form-builder/FormPreview";
-import SortableItem from "@/components/sortableItem/SortableItem";
-import type { AddedInput, QueryType } from "@/lib/types/formSelectItemstype";
 import {
   closestCenter,
   DndContext,
+  type DragEndEvent,
   KeyboardSensor,
   PointerSensor,
   useSensor,
   useSensors,
-  type DragEndEvent,
-} from "@dnd-kit/core";
+} from '@dnd-kit/core';
 import {
   arrayMove,
   SortableContext,
   sortableKeyboardCoordinates,
   verticalListSortingStrategy,
-} from "@dnd-kit/sortable";
-import { ChevronDown, Text } from "lucide-react";
-import { useEffect, useState } from "react";
+} from '@dnd-kit/sortable';
+import { ChevronDown, Text } from 'lucide-react';
+import { useEffect, useState } from 'react';
+import FormConfigPanel from '@/components/form-builder/FormConfigPanel';
+import FormPreview from '@/components/form-builder/FormPreview';
+import SortableItem from '@/components/sortableItem/SortableItem';
+import type { AddedInput, QueryType } from '@/lib/types/formSelectItemstype';
 
 const FormBuilder = () => {
-  const [formBuilderQuery, setFormBuilderQuery] = useState<QueryType>("input");
+  const [formBuilderQuery, setFormBuilderQuery] = useState<QueryType>('input');
   const [addedInputArray, setAddedInputArray] = useState<AddedInput[]>([]);
 
   const sensors = useSensors(
@@ -61,9 +61,9 @@ const FormBuilder = () => {
   };
 
   const getIcon = (type: QueryType) => {
-    return type === "input" ? (
+    return type === 'input' ? (
       <Text className="w-4 h-4" />
-    ) : type === "dropdown" ? (
+    ) : type === 'dropdown' ? (
       <ChevronDown className="w-4 h-4" />
     ) : null;
   };

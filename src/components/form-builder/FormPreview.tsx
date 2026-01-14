@@ -1,7 +1,7 @@
-import type { QueryType } from "@/lib/types/formSelectItemstype";
-import { ChevronDown, Text } from "lucide-react";
-import DropDown from "../dropdown/DropDown";
-import { Input } from "../ui/input";
+import { ChevronDown, Text } from 'lucide-react';
+import type { QueryType } from '@/lib/types/formSelectItemstype';
+import DropDown from '../dropdown/DropDown';
+import { Input } from '../ui/input';
 
 interface AddedInput {
   id: string;
@@ -11,10 +11,10 @@ interface AddedInput {
 
 const renderField = (query: QueryType) => {
   switch (query) {
-    case "input":
+    case 'input':
       return <Input placeholder="Enter text..." />;
 
-    case "dropdown":
+    case 'dropdown':
       return <DropDown />;
 
     default:
@@ -23,9 +23,9 @@ const renderField = (query: QueryType) => {
 };
 
 const getIcon = (type: QueryType) => {
-  return type === "input" ? (
+  return type === 'input' ? (
     <Text className="w-4 h-4 text-gray-600" />
-  ) : type === "dropdown" ? (
+  ) : type === 'dropdown' ? (
     <ChevronDown className="w-4 h-4 text-gray-600" />
   ) : null;
 };

@@ -1,3 +1,6 @@
+import formSelectItems, { iconMap } from '@data/formSelectItems';
+import { Search } from 'lucide-react';
+import { useState } from 'react';
 import {
   Select,
   SelectContent,
@@ -5,19 +8,16 @@ import {
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/components/ui/select";
-import type { QueryType } from "@/lib/types/formSelectItemstype";
-import formSelectItems, { iconMap } from "@data/formSelectItems";
-import { Search } from "lucide-react";
-import { useState } from "react";
-import { Input } from "../ui/input";
+} from '@/components/ui/select';
+import type { QueryType } from '@/lib/types/formSelectItemstype';
+import { Input } from '../ui/input';
 
 const FormConfigPanel = ({
   setFormBuilderQuery,
 }: {
   setFormBuilderQuery: (query: QueryType) => void;
 }) => {
-  const [query, setQuery] = useState("");
+  const [query, setQuery] = useState('');
 
   const formItems = formSelectItems
     .filter((item) => item.text.includes(query))

@@ -1,7 +1,7 @@
-import type { AddedInput, QueryType } from "@/lib/types/formSelectItemstype";
-import { useSortable } from "@dnd-kit/sortable";
-import { CSS } from "@dnd-kit/utilities";
-import { GripVertical, X } from "lucide-react";
+import { useSortable } from '@dnd-kit/sortable';
+import { CSS } from '@dnd-kit/utilities';
+import { GripVertical, X } from 'lucide-react';
+import type { AddedInput, QueryType } from '@/lib/types/formSelectItemstype';
 
 const SortableItem = ({
   input,

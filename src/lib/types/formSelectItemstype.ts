@@ -1,6 +1,6 @@
-import type { LucideIcon } from "lucide-react";
+import type { LucideIcon } from 'lucide-react';
 
-type iconType = "Type" | "ChevronDown";
+type iconType = 'Type' | 'ChevronDown';
 
 export interface FormSelectItem {
   value: string;
@@ -9,7 +9,7 @@ export interface FormSelectItem {
 }
 
 export type IconMapType = Record<iconType, LucideIcon>;
-export type QueryType = "input" | "dropdown";
+export type QueryType = 'input' | 'dropdown';
 
 export interface AddedInput {
   id: string;
