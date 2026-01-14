@@ -2,9 +2,9 @@ pre-commit:
   commands:
     lint:
       glob: "*.{js,ts,cjs,mjs,d.cts,d.mts,jsx,tsx,json,jsonc,css,html}"
-      run: git-format-staged --formatter 'biome check --write' .
+      run: npx git-format-staged --formatter 'npx biome check --write --files-ignore-unknown=true --no-errors-on-unmatched --stdin-file-path="{}"' {staged_files}
 
 commit-msg:
   commands:
     commitlint:
-      run: commitlint --edit {1}
+      run: npx commitlint --edit {1}
