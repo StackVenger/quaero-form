@@ -5,22 +5,15 @@
 
 @theme {
   /* Backgrounds */
-  --color-bgDefault: #0f172a;
-  /* main app background (slate-900) */
-  --color-bgMuted: #020617;
-  /* subtle sections / sidebars */
-  --color-bgElevated: #1e293b;
-  /* cards, modals, dropdowns */
+  --color-bgDefault: #0f172a; /* main app background (slate-900) */
+  --color-bgMuted: #020617; /* subtle sections / sidebars */
+  --color-bgElevated: #1e293b; /* cards, modals, dropdowns */
 
   /* Text */
-  --color-textPrimary: #e5e7eb;
-  /* main readable text */
-  --color-textSecondary: #94a3b8;
-  /* labels, descriptions */
-  --color-textMuted: #64748b;
-  /* helper / inactive text */
-  --color-textInverse: #020617;
-  /* text on light / primary buttons */
+  --color-textPrimary: #e5e7eb; /* main readable text */
+  --color-textSecondary: #94a3b8; /* labels, descriptions */
+  --color-textMuted: #64748b; /* helper / inactive text */
+  --color-textInverse: #020617; /* text on light / primary buttons */
 
   /* Borders */
   --color-borderDefault: #1e293b;
@@ -142,7 +135,6 @@
   * {
     @apply border-border outline-ring/50;
   }
-
   body {
     @apply bg-background text-foreground;
   }
