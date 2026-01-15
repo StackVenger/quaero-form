@@ -6,7 +6,7 @@ module.exports = {
       // Format: "emoji  type(scope): subject" or "type(scope): subject"
       // The emoji is optional to support legacy commits
       headerPattern:
-        /^(?:(?:[\u{1F300}-\u{1F9FF}]|[\u{2600}-\u{26FF}]|[\u{2700}-\u{27BF}])\s+)?(\w+)(?:\(([^)]*)\))?:\s(.+)$/u,
+        /^(?:(?:[\u{2300}-\u{23FF}]|[\u{2600}-\u{26FF}]|[\u{2700}-\u{27BF}]|[\u{1F300}-\u{1F9FF}])(?:\uFE0F|\uFE0E)?\s+)?(\w+)(?:\(([^)]*)\))?:\s(.+)$/u,
       headerCorrespondence: ['type', 'scope', 'subject'],
     },
   },
