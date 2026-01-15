@@ -14,8 +14,10 @@ import { Input } from '../ui/input';
 
 const FormConfigPanel = ({
   setFormBuilderQuery,
+  onAddField,
 }: {
   setFormBuilderQuery: (query: QueryType) => void;
+  onAddField: () => void;
 }) => {
   const [query, setQuery] = useState('');
 
@@ -35,7 +37,10 @@ const FormConfigPanel = ({
   return (
     <div>
       <Select
-        onValueChange={(value) => setFormBuilderQuery(value as QueryType)}
+        onValueChange={(value) => {
+          setFormBuilderQuery(value as QueryType);
+          onAddField();
+        }}
       >
         <SelectTrigger className="w-70 shadow-none">
           <SelectValue placeholder="Select a type" />

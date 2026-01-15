@@ -17,6 +17,7 @@ import { ChevronDown, Text } from 'lucide-react';
 import { useEffect, useState } from 'react';
 import FormConfigPanel from '@/components/form-builder/FormConfigPanel';
 import FormPreview from '@/components/form-builder/FormPreview';
+import FormValidation from '@/components/form-builder/FormValidation';
 import SortableItem from '@/components/sortableItem/SortableItem';
 import type { AddedInput, QueryType } from '@/lib/types/formSelectItemstype';
 
@@ -42,6 +43,18 @@ const FormBuilder = () => {
     };
     setAddedInputArray((prev) => [...prev, newInput]);
   }, [formBuilderQuery]);
+
+  const handleAddField = () => {
+    const newInput: AddedInput = {
+      id: Date.now().toString(),
+      type: formBuilderQuery,
+      label: `${
+        formBuilderQuery.charAt(0).toUpperCase() + formBuilderQuery.slice(1)
+      } Field`,
+    };
+
+    setAddedInputArray((prev) => [...prev, newInput]);
+  };
 
   const handleDragEnd = (event: DragEndEvent) => {
     const { active, over } = event;
@@ -72,7 +85,10 @@ const FormBuilder = () => {
     <div className="flex gap-10 p-6">
       {/* form config panel */}
       <div className="space-y-4 w-80">
-        <FormConfigPanel setFormBuilderQuery={setFormBuilderQuery} />
+        <FormConfigPanel
+          setFormBuilderQuery={setFormBuilderQuery}
+          onAddField={handleAddField}
+        />
 
         {/* Added Inputs List with Drag and Drop */}
         {addedInputArray.length > 0 && (
@@ -108,6 +124,11 @@ const FormBuilder = () => {
       {/* form preview */}
       <div className="flex-1">
         <FormPreview query={formBuilderQuery} addedInputs={addedInputArray} />
+      </div>
+
+      {/* Validate Form */}
+      <div className="flex-1">
+        <FormValidation formBuilderQuery={formBuilderQuery} />
       </div>
     </div>
   );
