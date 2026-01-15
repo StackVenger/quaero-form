@@ -4,22 +4,11 @@ import { Switch } from '@/components/ui/switch';
 import type { QueryType } from '@/lib/types/formSelectItemstype';
 
 const inputAttributes = [
-  'accept',
-  'alt',
   'autocomplete',
   'autofocus',
   'capture',
   'checked',
-  'dirname',
   'disabled',
-  'form',
-  'formaction',
-  'formenctype',
-  'formmethod',
-  'formnovalidate',
-  'formtarget',
-  'height',
-  'list',
   'max',
   'maxlength',
   'min',
@@ -28,26 +17,18 @@ const inputAttributes = [
   'name',
   'pattern',
   'placeholder',
-  'popovertarget',
-  'popovertargetaction',
   'readonly',
   'required',
-  'size',
-  'src',
-  'step',
   'type',
   'value',
-  'width',
 ];
 const selectAttributes = [
   'autocomplete',
   'autofocus',
   'disabled',
-  'form',
   'multiple',
   'name',
   'required',
-  'size',
 ];
 
 const FormValidation = ({

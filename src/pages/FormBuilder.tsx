@@ -87,7 +87,7 @@ const FormBuilder = () => {
       <div className="space-y-4 w-80">
         <FormConfigPanel
           setFormBuilderQuery={setFormBuilderQuery}
-          onAddField={handleAddField}
+          formBuilderQuery={formBuilderQuery}
         />
 
         {/* Added Inputs List with Drag and Drop */}
